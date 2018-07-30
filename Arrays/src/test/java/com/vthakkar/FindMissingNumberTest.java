@@ -9,12 +9,12 @@ class FindMissingNumberTest {
     @Test
     void findMissingNumber() {
         int[] a = {1,2,4,5,6};
-        assertEquals(3, 3);
+        assertEquals(3, FindMissingNumber.findMissingNumber(a, a.length));
     }
 
     @Test
     void findMissingNumber2() {
         int[] a = {1,2,4,5,6};
-        assertEquals(3, 3);
+        assertEquals(3, FindMissingNumber.findMissingNumber2(a, a.length));
     }
 }
