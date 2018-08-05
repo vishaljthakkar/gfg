@@ -202,4 +202,17 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
             return x;
         else return min(x.left);
     }
+
+    /* Return the largest key in a tree */
+    public Key max() {
+        if (isEmpty())
+            throw new NoSuchElementException("BST is empty");
+        return max(root).key;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null)
+            return x;
+        else return max(x.right);
+    }
 }
