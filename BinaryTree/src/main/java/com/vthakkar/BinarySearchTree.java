@@ -283,4 +283,19 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return (x.key.compareTo(y.key) == 0) &&
                 isSameBst(x.left, y.left) && isSameBst(x.right, y.right);
     }
+
+    /*
+        Given a root node of a bst return the height of the tree
+     */
+    public int heightOfBst() {
+        return heightOfBst(root);
+    }
+    private int heightOfBst(Node x) {
+        if (x == null) {
+            return 0;
+        }
+        int leftHeight = heightOfBst(x.left);
+        int rightHeight = heightOfBst(x.right);
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
 }

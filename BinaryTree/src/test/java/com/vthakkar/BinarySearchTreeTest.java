@@ -129,4 +129,11 @@ class BinarySearchTreeTest {
         bst2.put('Z', 12);
         assertFalse(bst.isSameBst(bst.root, bst2.root));
     }
+
+    @Test
+    void heightOfBst() {
+        assertEquals(0, new BinarySearchTree().heightOfBst());
+        assertEquals(5, bst.heightOfBst());
+        assertEquals(5, bstInt.heightOfBst());
+    }
 }
