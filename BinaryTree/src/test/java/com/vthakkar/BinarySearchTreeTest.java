@@ -121,4 +121,12 @@ class BinarySearchTreeTest {
         System.out.println("Post Order Traversal for BST2: ");
         bstInt.postOrderTraversalRecursive();
     }
+
+    @Test
+    void isSameBst() {
+        assertTrue(bst.isSameBst(bst.root, bst.root));
+        BinarySearchTree<Character, Integer> bst2= new BinarySearchTree<>();
+        bst2.put('Z', 12);
+        assertFalse(bst.isSameBst(bst.root, bst2.root));
+    }
 }

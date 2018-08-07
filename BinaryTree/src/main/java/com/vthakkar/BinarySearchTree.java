@@ -3,7 +3,7 @@ package com.vthakkar;
 import java.util.NoSuchElementException;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
-    private Node root;
+    public Node root;
 
     private class Node {
         private Key key;            // sorted by key
@@ -267,5 +267,20 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         postOrderTraversalRecursive(x.left);
         postOrderTraversalRecursive(x.right);
         System.out.println(x);
+    }
+
+    /*
+        Given root node of 2 BST return true if 2 BST are same else return false
+     */
+    public boolean isSameBst(Node x, Node y) {
+
+        if (x == null && y == null) {
+            return true;
+        }
+        if (x == null || y == null) {
+            return false;
+        }
+        return (x.key.compareTo(y.key) == 0) &&
+                isSameBst(x.left, y.left) && isSameBst(x.right, y.right);
     }
 }
