@@ -11,7 +11,8 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BinarySearchTreeTest {
-    public BinarySearchTree<Character, Integer> bst = new BinarySearchTree<Character, Integer>();
+    public BinarySearchTree<Character, Integer> bst = new BinarySearchTree<>();
+    public BinarySearchTree<Integer, String> bstInt = new BinarySearchTree<>();
 
     @BeforeEach
     void setUp() {
@@ -23,6 +24,18 @@ class BinarySearchTreeTest {
         bst.put('H', 6);
         bst.put('M', 7);
         bst.put('X', 8);
+
+        bstInt.put(10, "TEN");
+        bstInt.put(15, "FIFTEEN");
+        bstInt.put(30, "THIRTY");
+        bstInt.put(3, "THREE");
+        bstInt.put(6, "SIX");
+        bstInt.put(5, "FIVE");
+        bstInt.put(2, "TWO");
+        bstInt.put(9, "NINE");
+        bstInt.put(8, "EIGHT");
+
+
     }
 
     @Test
@@ -83,5 +96,29 @@ class BinarySearchTreeTest {
     @Test
     void max() {
         assertEquals((Character)'X', bst.max());
+    }
+
+    @Test
+    void inOrderTraversalRecursive() {
+        System.out.println("In Order Traversal for BST1: ");
+        bst.inOrderTraversalRecursive();
+        System.out.println("In Order Traversal for BST2: ");
+        bstInt.inOrderTraversalRecursive();
+    }
+
+    @Test
+    void preOrderTraversalRecursive() {
+        System.out.println("Pre Order Traversal for BST1: ");
+        bst.preOrderTraversalRecursive();
+        System.out.println("Pre Order Traversal for BST2: ");
+        bstInt.preOrderTraversalRecursive();
+    }
+
+    @Test
+    void postOrderTraversalRecursive() {
+        System.out.println("Post Order Traversal for BST1: ");
+        bst.postOrderTraversalRecursive();
+        System.out.println("Post Order Traversal for BST2: ");
+        bstInt.postOrderTraversalRecursive();
     }
 }

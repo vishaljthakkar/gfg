@@ -16,6 +16,13 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
             this.value = value;
             this.size = size;
         }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append(key.toString()).append("->").append(value.toString());
+            return sb.toString();
+        }
     }
 
     public BinarySearchTree() {
@@ -214,5 +221,51 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         if (x.right == null)
             return x;
         else return max(x.right);
+    }
+
+    public void inOrderTraversalRecursive() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("BST is empty");
+        }
+        inOrderTraversalRecursive(root);
+    }
+
+    private void inOrderTraversalRecursive (Node x) {
+        if (x == null)
+            return;
+        inOrderTraversalRecursive(x.left);
+        System.out.println(x.toString());
+        inOrderTraversalRecursive(x.right);
+    }
+
+    public void preOrderTraversalRecursive() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("BST is Empty");
+        }
+        preOrderTraversalRecursive(root);
+    }
+
+    private void preOrderTraversalRecursive(Node x) {
+        if (x == null) {
+            return;
+        }
+        System.out.println(x);
+        preOrderTraversalRecursive(x.left);
+        preOrderTraversalRecursive(x.right);
+    }
+
+    public void postOrderTraversalRecursive() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("BST is Empty");
+        }
+        postOrderTraversalRecursive(root);
+    }
+
+    private void postOrderTraversalRecursive(Node x) {
+        if (x == null)
+            return;
+        postOrderTraversalRecursive(x.left);
+        postOrderTraversalRecursive(x.right);
+        System.out.println(x);
     }
 }
