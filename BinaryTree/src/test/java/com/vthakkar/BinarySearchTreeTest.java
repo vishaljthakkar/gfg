@@ -161,4 +161,10 @@ class BinarySearchTreeTest {
 
         assertTrue(bstInt2.isBST());
     }
+
+    @Test
+    void levelOrderBst() {
+        bstInt.levelOrderBst();
+        bst.levelOrderBst();
+    }
 }

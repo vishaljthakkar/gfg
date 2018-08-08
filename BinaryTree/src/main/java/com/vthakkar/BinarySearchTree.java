@@ -1,7 +1,9 @@
 package com.vthakkar;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     public Node root;
@@ -343,5 +345,24 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         return isBST(x.left, min, (Integer)x.key) && isBST(x.right, (Integer)x.key, max);
     }
 
+    public void levelOrderBst() {
+        if (this == null || this.isEmpty()) {
+            throw new NoSuchElementException("BST not initialized and/or is empty");
+        }
+
+//        LinkedList<Node> queue = new LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
+        Node current = this.root;
+        queue.add(current);
+        while(!queue.isEmpty()) {
+//            current = queue.removeFirst();
+            current = queue.poll();
+            if (current.left != null)
+                queue.add(current.left);
+            if (current.right != null)
+                queue.add(current.right);
+            System.out.println(current);
+        }
+    }
 
 }
