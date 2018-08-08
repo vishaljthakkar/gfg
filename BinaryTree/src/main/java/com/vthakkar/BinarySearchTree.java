@@ -1,5 +1,6 @@
 package com.vthakkar;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
@@ -297,5 +298,29 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         int leftHeight = heightOfBst(x.left);
         int rightHeight = heightOfBst(x.right);
         return 1 + Math.max(leftHeight, rightHeight);
+    }
+
+    public boolean rootToLeafSum(Node x, Integer sum, List<Integer> result) {
+        if (x == null) {
+            return false;
+        }
+        //Leaf Node
+        if (x.left == null && x.right == null) {
+            if (x.value == sum) {
+                result.add((Integer)x.value);
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (rootToLeafSum(x.left, sum - (Integer)x.value, result)) {
+            result.add((Integer)x.value);
+            return true;
+        }
+        if (rootToLeafSum(x.right, sum - (Integer)x.value, result)) {
+            result.add((Integer)x.value);
+            return true;
+        }
+        return false;
     }
 }

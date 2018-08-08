@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -13,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinarySearchTreeTest {
     public BinarySearchTree<Character, Integer> bst = new BinarySearchTree<>();
     public BinarySearchTree<Integer, String> bstInt = new BinarySearchTree<>();
+    public BinarySearchTree<Integer, Integer> bstInt2 = new BinarySearchTree<>();
 
     @BeforeEach
     void setUp() {
@@ -35,7 +38,15 @@ class BinarySearchTreeTest {
         bstInt.put(9, "NINE");
         bstInt.put(8, "EIGHT");
 
-
+        bstInt2.put(10, 10);
+        bstInt2.put(15, 15);
+        bstInt2.put(30, 30);
+        bstInt2.put(3, 3);
+        bstInt2.put(6, 6);
+        bstInt2.put(5, 5);
+        bstInt2.put(2, 2);
+        bstInt2.put(9, 9);
+        bstInt2.put(8, 8);
     }
 
     @Test
@@ -135,5 +146,12 @@ class BinarySearchTreeTest {
         assertEquals(0, new BinarySearchTree().heightOfBst());
         assertEquals(5, bst.heightOfBst());
         assertEquals(5, bstInt.heightOfBst());
+    }
+
+    @Test
+    void rootToLeafSum() {
+        ArrayList<Integer> result = new ArrayList<>();
+        assertTrue(bstInt2.rootToLeafSum(bstInt2.root, 36, result));
+        assertIterableEquals(Arrays.asList(8,9,6,3,10), result);
     }
 }
