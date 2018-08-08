@@ -323,4 +323,25 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         }
         return false;
     }
+
+
+    public boolean isBST() {
+        return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+
+    private boolean isBST(Node x, Integer min, Integer max) {
+        // leaf nodes left and right will return true
+        if (x == null) {
+            return true;
+        }
+
+        /* Assumption is that equal nodes in the tree go to left */
+        if ((Integer)x.key <= min || (Integer)x.key > max) {
+            return false;
+        }
+
+        return isBST(x.left, min, (Integer)x.key) && isBST(x.right, (Integer)x.key, max);
+    }
+
+
 }

@@ -154,4 +154,11 @@ class BinarySearchTreeTest {
         assertTrue(bstInt2.rootToLeafSum(bstInt2.root, 36, result));
         assertIterableEquals(Arrays.asList(8,9,6,3,10), result);
     }
+
+    @Test
+    void isBST() {
+        /* https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/*/
+
+        assertTrue(bstInt2.isBST());
+    }
 }
