@@ -424,6 +424,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
        Initial values of inStrt and inEnd should be 0 and len -1.
        The function doesn't do any error checking for cases where
        inorder and preorder do not form a tree */
+
     public Node constructTree(Character[] in, Character[] pre, int inStrt, int inEnd) {
         if (inStrt > inEnd)
             return null;
@@ -449,6 +450,32 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
             }
         }
         return i;
+    }
+
+    public void rootToLeafPaths(Node x) {
+        if (x == null) {
+            throw new IllegalArgumentException("Passed null");
+        }
+        ArrayList<Node> path = new ArrayList<>();
+        rootToLeafPathsRecurse(x, path);
+    }
+
+    private void rootToLeafPathsRecurse(Node x, ArrayList<Node> path) {
+        if (x == null) {
+            return;
+        }
+        path.add(x);
+        if (x.left == null && x.right == null) {
+            System.out.println(path);
+            /* Before returning remove this node so that list is back
+            to its original state before calling this stack frame */
+            path.remove(path.size() - 1);
+            return;
+        }
+        rootToLeafPathsRecurse(x.left, path);
+        rootToLeafPathsRecurse(x.right, path);
+        /*Basically when even you return from current stack frame you need to restore you array list*/
+        path.remove(path.size() - 1);
     }
 
 }

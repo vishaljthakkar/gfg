@@ -186,11 +186,16 @@ class BinarySearchTreeTest {
         bst.levelOrderBst();
     }
 
-    @Test
+    @Test//https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
     void constructTreeTest() {
         Character[] in = new Character[]{'D', 'B', 'E', 'A', 'F', 'C'};
         Character[] pre = new Character[]{'A', 'B', 'D', 'E', 'C', 'F'};
         int len = in.length;
         bst.inOrderTraversalIterative(bst.constructTree(in, pre, 0 , len - 1));
+    }
+
+    @Test
+    void rootToLeafPathsTest() {
+        bstInt.rootToLeafPaths(bstInt.root);
     }
 }
