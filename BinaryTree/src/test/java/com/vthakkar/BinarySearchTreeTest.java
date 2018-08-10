@@ -118,6 +118,24 @@ class BinarySearchTreeTest {
     }
 
     @Test
+    void inOrderTraversalIterative() {
+        // https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/
+        System.out.println("In Order Traversal Iterative for BST1: ");
+        bst.inOrderTraversalIterative(bst.root);
+        System.out.println("In Order Traversal Iterative for BST2: ");
+        bstInt.inOrderTraversalIterative(bstInt.root);
+    }
+
+    @Test
+    void inOrderTraversalIterativeWithoutStack() {
+        // https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
+        System.out.println("In Order Morris for BST1: ");
+        bst.inOrderTraversalIterativeWithoutStack(bst.root);
+        System.out.println("In Order Morris for BST2: ");
+        bstInt.inOrderTraversalIterativeWithoutStack(bstInt.root);
+    }
+
+    @Test
     void preOrderTraversalRecursive() {
         System.out.println("Pre Order Traversal for BST1: ");
         bst.preOrderTraversalRecursive();

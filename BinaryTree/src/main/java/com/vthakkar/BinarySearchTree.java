@@ -1,9 +1,6 @@
 package com.vthakkar;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Queue;
+import java.util.*;
 
 public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     public Node root;
@@ -239,6 +236,60 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         inOrderTraversalRecursive(x.left);
         System.out.println(x.toString());
         inOrderTraversalRecursive(x.right);
+    }
+
+    public void inOrderTraversalIterative(Node x) {
+        if (x == null) {
+            throw new IllegalArgumentException("Null passed");
+        }
+        Stack<Node> stack = new Stack<>();
+        Node current = x;
+        stack.push(current);
+        current = current.left;
+        while(!stack.isEmpty()) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+            } else {
+                current = stack.pop();
+                System.out.println(current);
+                current = current.right;
+            }
+        }
+    }
+
+    /* Morris Traversal */
+    public void inOrderTraversalIterativeWithoutStack(Node x) {
+        Node pre;
+        if (x == null) {
+            throw new IllegalArgumentException("Null passed");
+        }
+        Node current = x;
+        while(current != null) {
+            /* If there is no left child visit the node */
+            if (current.left == null) {
+                System.out.println(current);
+                current = current.right;
+            } else {
+                /* Find the inorder predecessor of current */
+                pre = current.left;
+                while(pre.right != null && pre.right != current) {
+                    pre = pre.right;
+                }
+                /* Make current as right child of its inorder predecessor */
+                if (pre.right == null) {
+                    pre.right = current;
+                    current = current.left;
+                } else {
+                    /* Revert the changes made in if part to restore the
+                    original tree i.e.,fix the right child of predecssor*/
+                    pre.right = null;
+                    System.out.println(current);
+                    current = current.right;
+                }
+
+            }
+        }
     }
 
     public void preOrderTraversalRecursive() {
