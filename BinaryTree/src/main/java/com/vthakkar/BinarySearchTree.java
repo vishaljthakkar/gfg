@@ -416,4 +416,39 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
         }
     }
 
+
+    /* Construct tree from inorder sequence and pre order sequence */
+    static int preIndex = 0;
+    /* Recursive function to construct binary of size len from
+       Inorder traversal in[] and Preorder traversal pre[].
+       Initial values of inStrt and inEnd should be 0 and len -1.
+       The function doesn't do any error checking for cases where
+       inorder and preorder do not form a tree */
+    public Node constructTree(Character[] in, Character[] pre, int inStrt, int inEnd) {
+        if (inStrt > inEnd)
+            return null;
+         /* Pick current node from Preorder traversal using preIndex
+           and increment preIndex */
+        Node tNode = new Node((Key)pre[preIndex], (Value)pre[preIndex], 1);
+        preIndex += 1;
+        /* If this node has no children then return */
+        if (inStrt == inEnd)
+            return tNode;
+        /* search this node in inorder array */
+        int inIndex = search(in, inStrt, inEnd, tNode.key);
+        tNode.left = constructTree(in, pre, inStrt, inIndex - 1 );
+        tNode.right = constructTree(in, pre, inIndex + 1, inEnd);
+        return tNode;
+    }
+
+    private int search(Character[] in, int inStrt, int inEnd, Key key) {
+        int i;
+        for (i = inStrt; i <= inEnd; i++) {
+            if (key.compareTo((Key)in[i]) == 0) {
+                return i;
+            }
+        }
+        return i;
+    }
+
 }

@@ -185,4 +185,12 @@ class BinarySearchTreeTest {
         bstInt.levelOrderBst();
         bst.levelOrderBst();
     }
+
+    @Test
+    void constructTreeTest() {
+        Character[] in = new Character[]{'D', 'B', 'E', 'A', 'F', 'C'};
+        Character[] pre = new Character[]{'A', 'B', 'D', 'E', 'C', 'F'};
+        int len = in.length;
+        bst.inOrderTraversalIterative(bst.constructTree(in, pre, 0 , len - 1));
+    }
 }
