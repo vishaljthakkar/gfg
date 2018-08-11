@@ -3,6 +3,7 @@ package com.vthakkar;
 import org.junit.jupiter.api.Test;
 
 import static com.vthakkar.isUnique.isStringUnique;
+import static com.vthakkar.isUnique.isStringUniqueBitVector;
 import static org.junit.jupiter.api.Assertions.*;
 
 class isUniqueTest {
@@ -27,4 +28,14 @@ class isUniqueTest {
     void isStringUnique5() {
         assertFalse(isStringUnique(new String()));
     }
+
+    @Test
+    void isStringUniqueBitVector1() {
+        assertFalse(isStringUniqueBitVector(new String("aaaaaa")));
+    }
+    @Test
+    void isStringUniqueBitVector2() {
+        assertTrue(isStringUniqueBitVector(new String("abcd")));
+    }
+
 }

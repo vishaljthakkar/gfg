@@ -31,8 +31,25 @@ public class isUnique {
         return Boolean.TRUE;
     }
 
-    public static void main(String[] args) {
-        String str = "111111";
-        System.out.println(isStringUnique(str));
+    /* We can reduce our space usage by a  ctor of eight by using a bit vector.
+    We will assume, in the below code, that the string only uses the lowercase letters a through z.
+    This will allow us to use just a single int.
+     */
+    public static Boolean isStringUniqueBitVector(String str) {
+        Boolean retVal = Boolean.FALSE;
+        if (str == null || str.isEmpty())
+            return retVal;
+        /* If string length is greater that this max, then for sure there are duplicates */
+        if (str.length() > MAX_ASCII_LENGTH)
+            return retVal;
+        int checker = 0;
+        for (int i = 0; i < str.length(); i++) {
+            int val = str.charAt(i) - 'a';
+            if ((checker & (1 << val)) > 0) {
+                return false;
+            }
+            checker |= (1 << val);
+        }
+        return Boolean.TRUE;
     }
 }
