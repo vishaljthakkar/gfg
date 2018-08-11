@@ -21,7 +21,7 @@ public class isUnique {
         /* If string length is greater that this max, then for sure there are duplicates */
         if (str.length() > MAX_ASCII_LENGTH)
             return retVal;
-        boolean[] lookup = new boolean[MAX_ASCII_LENGTH]; // Or initialize to MAX_ASCII_LENGTH
+        boolean[] lookup = new boolean[MAX_ASCII_LENGTH];
         for(int i = 0; i < str.length(); i++) {
             int val = str.charAt(i);
             if (lookup[val])
