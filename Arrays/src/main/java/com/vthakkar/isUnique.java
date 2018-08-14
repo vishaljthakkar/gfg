@@ -1,6 +1,5 @@
 package com.vthakkar;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 /* Is Unique: Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structures? */
 public class isUnique {
