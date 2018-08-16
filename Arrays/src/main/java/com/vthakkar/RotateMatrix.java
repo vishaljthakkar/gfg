@@ -23,13 +23,16 @@ public class RotateMatrix {
 
     public static void rotateMatrix(int[][] inputMatrix) {
         int last = inputMatrix.length - 1;
-        int totalLevels = inputMatrix.length / 2;
+        int totalLevels = inputMatrix.length;
         int level = 0;
 
         while (level < totalLevels) {
             for (int i = level; i < last; i++) {
+                /* Top left <=> Top Right */
                 swap(inputMatrix, level, i, i, last);
+                /* Top left <=> Bottom Right */
                 swap(inputMatrix, level, i, last, last - i + level);
+                /* Top left <=> Bottom left */
                 swap(inputMatrix, level, i, last - i + level, level);
             }
             level++;
@@ -62,9 +65,5 @@ public class RotateMatrix {
             }
         }
         return newMatrix;
-    }
-    public static void main(String[] args) {
-
-
     }
 }
