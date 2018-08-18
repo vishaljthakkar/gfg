@@ -48,11 +48,11 @@ public class LinkedList<T extends Comparable> {
 
     }
 
-    public void deleteDuplicates() {
-        deleteDuplicates(head);
+    public void deleteDuplicatesSorted() {
+        deleteDuplicatesSorted(head);
     }
 
-    private void deleteDuplicates(Node head) {
+    private void deleteDuplicatesSorted(Node head) {
         if (head == null || size == 1) {
             return;
         }

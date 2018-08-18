@@ -27,7 +27,7 @@ class LinkedListTest {
         System.out.println("Before Remove Duplicates:");
         integerLinkedList.insert(30);
         System.out.println(integerLinkedList);
-        integerLinkedList.deleteDuplicates();
+        integerLinkedList.deleteDuplicatesSorted();
         System.out.println("After Remove Duplicates:");
         System.out.println(integerLinkedList);
     }
