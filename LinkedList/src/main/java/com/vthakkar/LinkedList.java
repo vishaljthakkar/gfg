@@ -1,5 +1,7 @@
 package com.vthakkar;
 
+import java.util.HashSet;
+
 public class LinkedList<T extends Comparable> {
     public Node head;
     public static int size;
@@ -46,6 +48,29 @@ public class LinkedList<T extends Comparable> {
         }
         size += 1;
 
+    }
+
+    public void deleteDuplicatesUnSorted() {
+        deleteDuplicatesUnSorted(head);
+    }
+
+    private void deleteDuplicatesUnSorted(Node head) {
+        if (head == null || size == 1) {
+            return;
+        }
+        HashSet<T> hashSet = new HashSet<>();
+        Node current = head;
+        Node previous = null;
+        while(current != null) {
+            if (hashSet.contains(current.data)) {
+                previous.next = current.next;
+                size -= 1;
+            } else {
+                hashSet.add(current.data);
+                previous = current;
+            }
+            current = current.next;
+        }
     }
 
     public void deleteDuplicatesSorted() {

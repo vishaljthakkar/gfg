@@ -23,12 +23,23 @@ class LinkedListTest {
     }
 
     @Test
-    void deleteDuplicates() {
-        System.out.println("Before Remove Duplicates:");
+    void deleteDuplicatesSorted() {
+        System.out.println("Before Remove Duplicates Sorted List:");
         integerLinkedList.insert(30);
         System.out.println(integerLinkedList);
         integerLinkedList.deleteDuplicatesSorted();
-        System.out.println("After Remove Duplicates:");
+        System.out.println("After Remove Duplicates Sorted List:");
+        System.out.println(integerLinkedList);
+    }
+
+    @Test
+    // ctct 219
+    void deleteDuplicatesUnsorted() {
+        System.out.println("Before Remove Duplicates Unsorted List:");
+        integerLinkedList.insert(30);
+        System.out.println(integerLinkedList);
+        integerLinkedList.deleteDuplicatesUnSorted();
+        System.out.println("After Remove Duplicates Unsorted List:");
         System.out.println(integerLinkedList);
     }
 }
