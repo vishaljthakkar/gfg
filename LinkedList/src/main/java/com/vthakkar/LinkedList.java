@@ -1,6 +1,7 @@
 package com.vthakkar;
 
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 
 public class LinkedList<T extends Comparable> {
     public Node head;
@@ -90,5 +91,26 @@ public class LinkedList<T extends Comparable> {
                 current = current.next;
             }
         }
+    }
+
+    // K = 1 return last element, K = 2 return penultimate
+    public T findNthToLast(int N) {
+        Node p1 = head;
+        Node p2 = head;
+
+        if (head == null) {
+            throw new NoSuchElementException("Linkedlist is empty");
+        }
+        for(int i = 0; i < N; i++) {
+            if (p2 == null) {
+                return null;
+            }
+            p2 = p2.next;
+        }
+        while(p2 != null) {
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        return p1.data;
     }
 }

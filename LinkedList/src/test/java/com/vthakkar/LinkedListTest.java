@@ -42,4 +42,15 @@ class LinkedListTest {
         System.out.println("After Remove Duplicates Unsorted List:");
         System.out.println(integerLinkedList);
     }
+
+    //ctci222
+    @Test
+    void findNthToLastTest() {
+        integerLinkedList.insert(30);
+        System.out.println(integerLinkedList);
+        System.out.println("Nth to last: 6");
+        System.out.println(integerLinkedList.findNthToLast(6));
+        System.out.println("Nth to last: 3");
+        System.out.println(integerLinkedList.findNthToLast(3));
+    }
 }
