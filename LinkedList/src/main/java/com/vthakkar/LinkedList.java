@@ -113,4 +113,15 @@ public class LinkedList<T extends Comparable> {
         }
         return p1.data;
     }
+
+    // ctci 222: Delete a node that node itself is supplied and you do not have access to head node.
+    public boolean deleteNode(Node node) {
+        if (node == null || node.next == null) {
+            return Boolean.FALSE;
+        }
+        Node next = node.next;
+        node.data = next.data;
+        node.next = next.next;
+        return Boolean.TRUE;
+    }
 }
