@@ -53,4 +53,66 @@ class LinkedListTest {
         System.out.println("Nth to last: 3");
         System.out.println(integerLinkedList.findNthToLast(3));
     }
+
+    @Test
+    void partitionTest() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(1);
+        list.insert(4);
+        list.insert(3);
+        list.insert(2);
+        list.insert(5);
+        list.insert(2);
+        list.insert(3);
+        System.out.println("Before Partition");
+        System.out.println(list);
+        final LinkedList.Node partition = (LinkedList.Node) list.partition(3);
+        System.out.println("After Partition");
+        System.out.println(partition);
+    }
+
+    @Test
+    void partitionTest2() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(1);
+        list.insert(4);
+        list.insert(2);
+        list.insert(10);
+        System.out.println("Before Partition");
+        System.out.println(list);
+        final LinkedList.Node partition = (LinkedList.Node) list.partition(3);
+        System.out.println("After Partition");
+        System.out.println(partition);
+    }
+
+    @Test
+    void partitionTest3() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(10);
+        list.insert(4);
+        list.insert(20);
+        list.insert(10);
+        list.insert(3);
+        System.out.println("Before Partition");
+        System.out.println(list);
+        final LinkedList.Node partition = (LinkedList.Node) list.partition(3);
+        System.out.println("After Partition");
+        System.out.println(partition);
+    }
+
+    @Test
+    void partitionTest4() {
+        LinkedList<Integer> list = new LinkedList<>();
+        list.insert(1);
+        list.insert(4);
+        list.insert(3);
+        list.insert(2);
+        list.insert(5);
+        list.insert(2);
+        System.out.println("Before Partition");
+        System.out.println(list);
+        final LinkedList.Node partition = (LinkedList.Node) list.partition(3);
+        System.out.println("After Partition");
+        System.out.println(partition);
+    }
 }
