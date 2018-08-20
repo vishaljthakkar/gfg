@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedList<T extends Comparable> {
     public Node head;
-    public static int size;
+    public int size;
 
     public class Node {
         private T data;
@@ -13,6 +13,11 @@ public class LinkedList<T extends Comparable> {
 
         public Node(T data) {
             this.data = data;
+            this.next = null;
+        }
+
+        public Node(Integer integer) {
+            this.data = (T) integer;
             this.next = null;
         }
 
@@ -142,6 +147,8 @@ Output: 1->2->4->10
 Input : 10->4->20->10->3
         x = 3
 Output: 3->10->4->20->10
+
+NOTE: CTCI and Gfg have different approach. Leet code works fine with CTCI
      */
 
     public Node partition(T x) {
@@ -164,25 +171,28 @@ Output: 3->10->4->20->10
                     ltStart = ltEnd = head;
                 } else {
                     ltEnd.next = head;
-                    ltEnd = ltEnd.next;
+//                    ltEnd = ltEnd.next;
+                    ltEnd = head;
                 }
-            } else if (head.data.compareTo(x) > 0) {
+            } else if (head.data.compareTo(x) >= 0) {
                 if (gtStart == null) {
                     gtStart = gtEnd = head;
                 } else {
                     gtEnd.next = head;
-                    gtEnd = gtEnd.next;
+//                    gtEnd = gtEnd.next;
+                    gtEnd = head;
                 }
+            }
                 // If current node is equal to x, append it
                 // to the list of x values
-            } else if (head.data.compareTo(x) == 0) {
-                    if (equalStart == null) {
-                        equalStart = equalEnd = head;
-                    } else {
-                        equalEnd.next = head;
-                        equalEnd = equalEnd.next;
-                    }
-            }
+//            } else if (head.data.compareTo(x) == 0) {
+//                    if (equalStart == null) {
+//                        equalStart = equalEnd = head;
+//                    } else {
+//                        equalEnd.next = head;
+//                        equalEnd = equalEnd.next;
+//                    }
+//            }
             head = head.next;
         }
 
@@ -195,24 +205,72 @@ Output: 3->10->4->20->10
 
         // If smaller list is empty
         if (ltStart == null) {
-            if (equalStart == null) {
+//            if (equalStart == null) {
                 return gtStart;
-            }
-            equalEnd.next = gtStart;
-            return equalStart;
+//            }
+//            equalEnd.next = gtStart;
+//            return equalStart;
         }
 
         // If smaller list is not empty
         // and equal list is empty
-        if (equalStart == null) {
-            ltEnd.next = gtStart;
-            return ltStart;
-        }
+//        if (equalStart == null) {
+//            ltEnd.next = gtStart;
+//            return ltStart;
+//        }
 
         // If both smaller and equal list
         // are non-empty
-        ltEnd.next = equalStart;
-        equalEnd.next = gtStart;
+        ltEnd.next = gtStart;//equalStart;
+//        gtStart.next = gtStart;
         return ltStart;
+    }
+
+
+    /*
+    Sum Lists: You have two numbers represented by a linked list,where each node contains a single digit.
+    The digits are stored in reverse order,such that the 1's digit is at the head of the list.
+    Write a function that adds the two numbers and returns the sum as a linked list.
+    EXAMPLE
+    Input: (7-> 1 -> 6) + (5 -> 9 -> 2).That is,617 + 295. Output:2 -> 1 -> 9.Thatis,912.
+    FOLLOW UP
+    Suppose the digits are stored in forward order. Repeat the above problem. Input: (6 -> 1 -> 7) + (2 -> 9 -> 5).Thatis,617 + 295. Output:9 ->1 ->2.Thatis,912.
+
+     */
+
+    public <T extends Comparable<T>> Node addTwoNumbers(Node head1, Node head2) {
+
+        Node result = null;
+        Node previous = null;
+        Node temp = null;
+        int carry = 0, sum;
+
+        while(head1 != null || head2 != null) {
+            final Integer data1 = head1 != null ?  (Integer) head1.data : 0;
+            final Integer data2 = head2 != null ? (Integer) head2.data : 0;
+            sum = Integer.sum(carry, Integer.sum(data1, data2));
+            carry = (sum >= 10) ? 1 : 0;
+            sum = sum % 10;
+
+            temp = new Node(Integer.valueOf(sum));
+            if (result == null) {
+                result = temp;
+            } else {
+                previous.next = temp;
+            }
+
+            previous = temp;
+            if (head1 != null) {
+                head1 = head1.next;
+            }
+            if (head2 != null) {
+                head2 = head2.next;
+            }
+        }
+        if(carry > 0) {
+            temp.next= new Node(Integer.valueOf(carry));
+        }
+        return result;
+
     }
 }

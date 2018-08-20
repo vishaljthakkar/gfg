@@ -115,4 +115,45 @@ class LinkedListTest {
         System.out.println("After Partition");
         System.out.println(partition);
     }
+
+
+    /*
+    https://www.geeksforgeeks.org/add-two-numbers-represented-by-linked-lists/
+    CTCI 225
+     */
+
+    @Test
+    void addTwoNumberTest1() {
+        LinkedList<Integer> list1 = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list1.insert(7);
+        list1.insert(1);
+        list1.insert(6);
+        list2.insert(5);
+        list2.insert(9);
+        list2.insert(2);
+        System.out.println("Addition of below 2 list");
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println("Result");
+        System.out.println(list1.addTwoNumbers(list1.head, list2.head));
+    }
+
+    @Test
+    void addTwoNumberTest2() {
+        LinkedList<Integer> list1 = new LinkedList<>();
+        LinkedList<Integer> list2 = new LinkedList<>();
+        list1.insert(7);
+        list1.insert(5);
+        list1.insert(9);
+        list1.insert(4);
+        list1.insert(6);
+        list2.insert(8);
+        list2.insert(4);
+        System.out.println("Addition of below 2 list");
+        System.out.println(list1);
+        System.out.println(list2);
+        System.out.println("Result");
+        System.out.println(list1.addTwoNumbers(list1.head, list2.head));
+    }
 }
