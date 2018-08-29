@@ -17,4 +17,16 @@ class isPalindromeTest {
 
         System.out.println(isPalindrome.isPalindrome(node1));
     }
+
+    @Test
+    void isPalindrome2() {
+        LinkedListNode node1 = new LinkedListNode(1);
+        node1 = LinkedListAddSum.insertBefore(node1, 2);
+        node1 = LinkedListAddSum.insertBefore(node1, 2);
+//        node1 = LinkedListAddSum.insertBefore(node1, 2);
+        node1 = LinkedListAddSum.insertBefore(node1, 1);
+//        node1 = LinkedListAddSum.insertBefore(node1, 1);
+
+        System.out.println(isPalindrome.isPalindrome(node1));
+    }
 }
