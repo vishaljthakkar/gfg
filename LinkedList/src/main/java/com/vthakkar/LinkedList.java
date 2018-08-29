@@ -234,7 +234,8 @@ NOTE: CTCI and Gfg have different approach. Leet code works fine with CTCI
     EXAMPLE
     Input: (7-> 1 -> 6) + (5 -> 9 -> 2).That is,617 + 295. Output:2 -> 1 -> 9.Thatis,912.
     FOLLOW UP
-    Suppose the digits are stored in forward order. Repeat the above problem. Input: (6 -> 1 -> 7) + (2 -> 9 -> 5).Thatis,617 + 295. Output:9 ->1 ->2.Thatis,912.
+    Suppose the digits are stored in forward order. Repeat the above problem.
+    Input: (6 -> 1 -> 7) + (2 -> 9 -> 5).Thatis,617 + 295. Output:9 ->1 ->2.Thatis,912.
 
      */
 
@@ -271,6 +272,6 @@ NOTE: CTCI and Gfg have different approach. Leet code works fine with CTCI
             temp.next= new Node(Integer.valueOf(carry));
         }
         return result;
-
     }
+
 }
