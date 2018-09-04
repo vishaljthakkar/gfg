@@ -3,6 +3,9 @@ package com.vthakkar;
 import java.util.LinkedList;
 
 /* CTCI 4.1 pg. 252 */
+/*
+Route Between Nodes: Given a directed graph, design an algorithm to find out whether there is a route between two nodes.
+ */
 public class RouteBetween {
 
     public static Boolean routeBetweenNodes(Graph g, Node start, Node end) {
