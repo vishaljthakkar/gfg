@@ -378,6 +378,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> {
     }
 
 
+    /* CTCI 4.5 pg. 256 */
     public boolean isBST() {
         return isBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
